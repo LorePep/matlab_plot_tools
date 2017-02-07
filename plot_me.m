@@ -1,4 +1,4 @@
-function [ h ] = plot_me( x, y, figtitle, xlab, ylab, lw, ls, font)
+function [ h ] = plot_me( x, y, figtitle, xlab, ylab, ls, lw, font, h)
 %PLOT_ME Function to plot higher quality figures
 %   This function plots figures with aesthetics fixes, for 
 %   a more pleasant graphical look
@@ -8,20 +8,23 @@ function [ h ] = plot_me( x, y, figtitle, xlab, ylab, lw, ls, font)
 %       figtitle: figure title
 %       xlab: x-axis label, use '' for no label
 %       ylab: y-axis label, use '' for no label
+%       ls: line style
 %       lw (optional): plot line-width, default is 1.5
 %       font (optional): font for the text in the figure, default is Arial
 %
 %       Author: Lorenzo Peppoloni
 %       www.github.com/LorePep
 
-h = figure;
-
+if nargin < 9
+    h = figure;
 if nargin < 8
     font = 'Arial';
-elseif nargin < 7
+end
+if nargin < 7
     lw = 1.5;
 end
         
+
 plot(x,y, ls, 'LineWidth', lw);
 
 hTitle = title(figtitle);
